@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
-import { map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
+import { map, exhaustMap, catchError } from 'rxjs/operators';
 import {
   HeroesActions,
   HeroesApiActions,
@@ -15,7 +15,7 @@ export class HeroesEffects {
     ofType(HeroesApiActions.retrievedHeroList),
     exhaustMap(() => of([])
       .pipe(
-        map(heroes => HistoriesActions.addHistory({ history: 'Loaded Success' })),
+        map(() => HistoriesActions.addHistory({ history: 'Loaded Success' })),
         catchError(() => EMPTY)
       ))
     )
@@ -25,7 +25,7 @@ export class HeroesEffects {
     ofType(HeroesActions.addHero),
     exhaustMap(() => of([])
       .pipe(
-        map(heroes => HistoriesActions.addHistory({ history: 'Added Success' })),
+        map(() => HistoriesActions.addHistory({ history: 'Added Success' })),
         catchError(() => EMPTY)
       ))
     )
@@ -35,7 +35,7 @@ export class HeroesEffects {
     ofType(HeroesActions.removeHero),
     exhaustMap(() => of([])
       .pipe(
-        map(heroes => HistoriesActions.addHistory({ history: 'Removed Success' })),
+        map(() => HistoriesActions.addHistory({ history: 'Removed Success' })),
         catchError(() => EMPTY)
       ))
     )
