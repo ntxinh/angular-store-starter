@@ -4,7 +4,7 @@ import { HeroesActions, HeroesApiActions } from 'src/app/state/hero/heroes.actio
 import { selectAllHeroes, selectMyHeroes } from 'src/app/state/hero/heroes.selectors';
 
 @Component({
-  selector: 'heroes',
+  // selector: 'heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })

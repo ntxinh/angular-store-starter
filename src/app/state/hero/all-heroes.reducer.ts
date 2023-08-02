@@ -7,5 +7,5 @@ export const initialState: ReadonlyArray<Hero> = [];
 
 export const allHeroesReducer = createReducer(
   initialState,
-  on(HeroesApiActions.retrievedHeroList, (_state, { heroes }) => heroes)
+  on(HeroesApiActions.retrievedHeroList, (_state, { heroes }) => heroes),
 );

@@ -10,10 +10,14 @@ import { HeroesModule } from './components/heroes/heroes.module';
 import { allHeroesReducer } from './state/hero/all-heroes.reducer';
 import { myHeroesReducer } from './state/hero/my-heroes.reducer';
 import { metaReducers } from './state/meta.reducer.ts';
+import { HeroesEffects } from './state/hero/heroes.effects';
+import { HistoryComponent } from './components/histories/histories.component';
+import { historiesReducer } from './state/history/history.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,11 +27,12 @@ import { metaReducers } from './state/meta.reducer.ts';
 
     StoreModule.forRoot({
       allHeroes: allHeroesReducer,
-      myHeroes: myHeroesReducer
+      myHeroes: myHeroesReducer,
+      histories: historiesReducer,
     }, {
       metaReducers
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([HeroesEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
