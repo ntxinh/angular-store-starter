@@ -1,10 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { HeroesActions, HeroesApiActions } from 'src/app/state/hero/heroes.actions';
+import { selectAllHeroes, selectMyHeroes } from 'src/app/state/hero/heroes.selectors';
 
 @Component({
   selector: 'heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent {
+export class HeroesComponent implements OnInit {
   title = 'Heroes';
+
+  allHeroes$ = this.store.select(selectAllHeroes);
+  myHeroes$ = this.store.select(selectMyHeroes);
+
+  onAdd(heroId: number) {
+    this.store.dispatch(HeroesActions.addHero({ heroId }));
+  }
+
+  onRemove(heroId: number) {
+    this.store.dispatch(HeroesActions.removeHero({ heroId }));
+  }
+
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    // Seed data
+    const heroes = [
+      { id: 12, name: 'Airi' },
+      { id: 13, name: 'Aleister' },
+      { id: 14, name: 'Alice' },
+      { id: 15, name: 'Allain' },
+      { id: 16, name: 'Amily' },
+      { id: 17, name: 'Annette' },
+      { id: 18, name: 'Aoi' },
+      { id: 19, name: 'Arduin' },
+      { id: 20, name: 'Arthur' }
+    ];
+    this.store.dispatch(HeroesApiActions.retrievedHeroList({ heroes }));
+  }
 }
