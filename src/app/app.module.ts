@@ -11,7 +11,6 @@ import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 import { ToastrModule } from 'ngx-toastr';
 import { HelpersService } from './services/helpers.service';
-import { NewsApiService } from './services/api/news.api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NewsModule } from './news/news.module';
 import { Configuration } from './app.constants';
@@ -41,7 +40,6 @@ import { Configuration } from './app.constants';
     // Services
     Configuration,
     HelpersService,
-    NewsApiService,
   ],
   bootstrap: [AppComponent],
 })

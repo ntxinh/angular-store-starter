@@ -75,18 +75,17 @@ const newsReducerInternal = createReducer(
         data.push(entry);
       }
     }
-    console.log(data);
 
     return {
       ...state,
       groups: [...data],
     };
-  })
+  }),
 );
 
 export function newsReducer(
   state: NewsState | undefined,
-  action: Action
+  action: Action,
 ): NewsState {
   return newsReducerInternal(state, action);
 }

@@ -3,7 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { NewsService } from './news.service';
+import { NewsApiService } from './news.api.service';
+import { NewsHubService } from './news.hub.service';
 import { NewsComponent } from './components/news.component';
 import { NewsRoutes } from './news.routes';
 
@@ -25,7 +26,7 @@ import { newsStoreName } from './store/news.selectors';
 
   declarations: [NewsComponent],
 
-  providers: [NewsService],
+  providers: [NewsApiService, NewsHubService],
 
   exports: [NewsComponent],
 })

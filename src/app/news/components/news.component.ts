@@ -14,31 +14,37 @@ export class NewsComponent implements OnInit {
   public async: any;
   newsItem: NewsItem;
   newsItemHeader = '';
-  newsItemNewsText= '';
+  newsItemNewsText = '';
   group = 'IT';
   author = 'unknown';
   group$: Observable<string[]>;
   newsItems$: Observable<NewsItem[]>;
 
-  constructor(
-    private store: Store<any>,
-  ) {
+  constructor(private store: Store<any>) {
     this.group$ = this.store.pipe(select(fromSelectorsStore.selectGroups));
     this.newsItems$ = this.store.pipe(
-      select(fromSelectorsStore.selectNewsItems)
+      select(fromSelectorsStore.selectNewsItems),
     );
 
     this.newsItem = new NewsItem();
     this.newsItem.AddData('', '', this.author, this.group);
   }
 
-  public sendNewsItem(): void {
+  ngOnInit() {
+    this.store.dispatch(newsAction.selectAllNewsGroupsAction());
+  }
 
+  public sendNewsItem(): void {
     this.newsItem = new NewsItem();
-    this.newsItem.AddData(this.newsItemHeader, this.newsItemNewsText, this.author, this.group);
+    this.newsItem.AddData(
+      this.newsItemHeader,
+      this.newsItemNewsText,
+      this.author,
+      this.group,
+    );
 
     this.store.dispatch(
-      newsAction.sendNewsItemAction({ payload: this.newsItem })
+      newsAction.sendNewsItemAction({ payload: this.newsItem }),
     );
   }
 
@@ -48,14 +54,5 @@ export class NewsComponent implements OnInit {
 
   public leave(): void {
     this.store.dispatch(newsAction.leaveGroupAction({ payload: this.group }));
-  }
-
-  ngOnInit() {
-    console.log('go');
-
-    console.log(
-      'this.store.dispatch(new NewsActions.SelectAllGroupsAction()'
-    );
-    this.store.dispatch(newsAction.selectAllNewsGroupsAction());
   }
 }

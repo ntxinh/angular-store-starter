@@ -7,10 +7,10 @@ export const selectNewsStore = createFeatureSelector<NewsState>(newsStoreName);
 
 export const selectNewsItems = createSelector(
   selectNewsStore,
-  (state: NewsState) => state.newsItems
+  (state: NewsState) => state.newsItems,
 );
 
 export const selectGroups = createSelector(
   selectNewsStore,
-  (state: NewsState) => state.groups
+  (state: NewsState) => state.groups,
 );
