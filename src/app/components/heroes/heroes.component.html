@@ -1,9 +1,0 @@
-<h1>{{ title }}</h1>
-
-<h2>All Heroes</h2>
-<app-all-heroes [heroes]="(allHeroes$ | async)!" (add)="onAdd($event)">
-</app-all-heroes>
-
-<h2>My Heroes</h2>
-<app-my-heroes [heroes]="(myHeroes$ | async)!" (remove)="onRemove($event)">
-</app-my-heroes>

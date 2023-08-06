@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HeroesModule } from './components/heroes/heroes.module';
 import { metaReducers } from './store/meta.reducer.ts';
-import { HistoryComponent } from './components/histories/histories.component';
 import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 import { ToastrModule } from 'ngx-toastr';
@@ -19,7 +17,7 @@ import { NewsModule } from './news/news.module';
 import { Configuration } from './app.constants';
 
 @NgModule({
-  declarations: [AppComponent, HistoryComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +28,6 @@ import { Configuration } from './app.constants';
     ToastrModule.forRoot(), // ToastrModule added
 
     // Modules
-    HeroesModule,
     NewsModule,
 
     // Store libs
