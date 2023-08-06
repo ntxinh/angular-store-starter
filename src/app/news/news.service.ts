@@ -68,7 +68,7 @@ export class NewsService {
     console.warn('initHub');
 
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(`${this.configuration.Server}/looney`)
+      .withUrl(`${this.configuration.Server}/news`)
       .configureLogging(signalR.LogLevel.Information)
       .build();
 
