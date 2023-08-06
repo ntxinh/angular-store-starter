@@ -1,41 +1,43 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HeroesModule } from './components/heroes/heroes.module';
-import { allHeroesReducer } from './state/hero/all-heroes.reducer';
-import { myHeroesReducer } from './state/hero/my-heroes.reducer';
-import { metaReducers } from './state/meta.reducer.ts';
-import { HeroesEffects } from './state/hero/heroes.effects';
+import { metaReducers } from './store/meta.reducer.ts';
 import { HistoryComponent } from './components/histories/histories.component';
-import { historiesReducer } from './state/history/history.reducer';
+import { reducers } from './store/reducers';
+import { effects } from './store/effects';
+import { ToastrModule } from 'ngx-toastr';
+import { HelpersService } from './services/helpers.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HistoryComponent,
-  ],
+  declarations: [AppComponent, HistoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
 
+    // 3rd libs
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+
+    // Modules
     HeroesModule,
 
-    StoreModule.forRoot({
-      allHeroes: allHeroesReducer,
-      myHeroes: myHeroesReducer,
-      histories: historiesReducer,
-    }, {
-      metaReducers
+    // Store libs
+    StoreModule.forRoot(reducers, {
+      metaReducers,
     }),
-    EffectsModule.forRoot([HeroesEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    EffectsModule.forRoot(effects),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // Services
+    HelpersService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

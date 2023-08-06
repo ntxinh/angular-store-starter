@@ -1,9 +1,6 @@
-<div
-  *ngFor="let hero of heroes"
->
-  <p>{{hero.name}}</p>
-  <button
-    (click)="remove.emit(hero.id)"
-    data-test="remove-button"
-  >Remove from My Heroes</button>
+<div *ngFor="let hero of heroes">
+  <p>{{ hero.name }}</p>
+  <button (click)="remove.emit(hero.id)" data-test="remove-button">
+    Remove from My Heroes
+  </button>
 </div>

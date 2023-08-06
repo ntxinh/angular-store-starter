@@ -7,6 +7,6 @@ import { Hero } from 'src/app/models/hero';
   styleUrls: ['./all-heroes.component.css'],
 })
 export class AllHeroesComponent {
-  @Input() heroes: ReadonlyArray<Hero> = [];
+  @Input() heroes: Array<Hero> = [];
   @Output() add = new EventEmitter<number>();
 }

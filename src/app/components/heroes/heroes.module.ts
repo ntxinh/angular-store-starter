@@ -5,13 +5,7 @@ import { AllHeroesComponent } from './all-heroes/all-heroes.component';
 import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    HeroesComponent,
-    AllHeroesComponent,
-    MyHeroesComponent,
-  ]
+  imports: [CommonModule],
+  declarations: [HeroesComponent, AllHeroesComponent, MyHeroesComponent],
 })
-export class HeroesModule { }
+export class HeroesModule {}

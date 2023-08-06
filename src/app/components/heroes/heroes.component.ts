@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { HeroesActions, HeroesApiActions } from 'src/app/state/hero/heroes.actions';
-import { selectAllHeroes, selectMyHeroes } from 'src/app/state/hero/heroes.selectors';
+import {
+  HeroesActions,
+  HeroesApiActions,
+} from 'src/app/store/hero/heroes.actions';
+import {
+  selectAllHeroes,
+  selectMyHeroes,
+} from 'src/app/store/hero/heroes.selectors';
 
 @Component({
   // selector: 'heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
   title = 'Heroes';
@@ -35,7 +41,7 @@ export class HeroesComponent implements OnInit {
       { id: 17, name: 'Annette' },
       { id: 18, name: 'Aoi' },
       { id: 19, name: 'Arduin' },
-      { id: 20, name: 'Arthur' }
+      { id: 20, name: 'Arthur' },
     ];
     this.store.dispatch(HeroesApiActions.retrievedHeroList({ heroes }));
   }

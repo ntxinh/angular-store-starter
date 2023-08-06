@@ -12,6 +12,6 @@ export const HeroesActions = createActionGroup({
 export const HeroesApiActions = createActionGroup({
   source: 'Heroes API',
   events: {
-    'Retrieved Hero List': props<{ heroes: ReadonlyArray<Hero> }>(),
+    'Retrieved Hero List': props<{ heroes: Array<Hero> }>(),
   },
 });

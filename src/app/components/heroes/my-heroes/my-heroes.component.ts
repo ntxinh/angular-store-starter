@@ -7,6 +7,6 @@ import { Hero } from 'src/app/models/hero';
   styleUrls: ['./my-heroes.component.css'],
 })
 export class MyHeroesComponent {
-  @Input() heroes: ReadonlyArray<Hero> = [];
+  @Input() heroes: Array<Hero> = [];
   @Output() remove = new EventEmitter<number>();
 }
