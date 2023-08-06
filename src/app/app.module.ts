@@ -13,12 +13,17 @@ import { reducers } from './store/reducers';
 import { effects } from './store/effects';
 import { ToastrModule } from 'ngx-toastr';
 import { HelpersService } from './services/helpers.service';
+import { NewsApiService } from './services/api/news.api.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NewsModule } from './news/news.module';
+import { Configuration } from './app.constants';
 
 @NgModule({
   declarations: [AppComponent, HistoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
 
     // 3rd libs
     BrowserAnimationsModule, // required animations module
@@ -26,6 +31,7 @@ import { HelpersService } from './services/helpers.service';
 
     // Modules
     HeroesModule,
+    NewsModule,
 
     // Store libs
     StoreModule.forRoot(reducers, {
@@ -36,7 +42,9 @@ import { HelpersService } from './services/helpers.service';
   ],
   providers: [
     // Services
+    Configuration,
     HelpersService,
+    NewsApiService,
   ],
   bootstrap: [AppComponent],
 })
