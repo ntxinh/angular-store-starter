@@ -3,7 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import { HeroesActions, HeroesApiActions } from './heroes.actions';
 import { HeroState } from './hero.state';
 
-export const initialState = {} as HeroState;
+export const initialState = { allHeroes: [], myHeroes: [] } as HeroState;
 
 export const heroReducer = createReducer(
   initialState,
