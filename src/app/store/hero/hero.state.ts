@@ -1,6 +1,6 @@
-import { Hero } from "src/app/models/hero";
+import { Hero } from 'src/app/models/hero';
 
 export interface HeroState {
-  heroes: Array<Hero>;
-  isSelectedFlag: boolean;
+  allHeroes: Array<Hero>;
+  myHeroes: Array<number>;
 }
