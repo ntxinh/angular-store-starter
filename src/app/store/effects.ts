@@ -1,4 +1,4 @@
-import { AppEffects } from './app/app.effects';
-import { HeroesEffects } from './hero/heroes.effects';
+import { AppEffects } from './app';
+import { HeroEffects } from './hero';
 
-export const effects = [AppEffects, HeroesEffects];
+export const effects = [AppEffects, HeroEffects];

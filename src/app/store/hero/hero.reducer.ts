@@ -1,21 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { HeroesActions, HeroesApiActions } from './heroes.actions';
+import { HeroActions, HeroApiActions } from './hero.actions';
 import { HeroState } from './hero.state';
 
 export const initialState = { allHeroes: [], myHeroes: [] } as HeroState;
 
 export const heroReducer = createReducer(
   initialState,
-  on(HeroesApiActions.retrievedHeroList, (state, { heroes }) => ({
+  on(HeroApiActions.retrievedHeroList, (state, { heroes }) => ({
     ...state,
     allHeroes: heroes,
   })),
-  on(HeroesActions.removeHero, (state, { heroId }) => ({
+  on(HeroActions.removeHero, (state, { heroId }) => ({
     ...state,
     myHeroes: state.myHeroes.filter((id) => id !== heroId),
   })),
-  on(HeroesActions.addHero, (state, { heroId }) => {
+  on(HeroActions.addHero, (state, { heroId }) => {
     if (state.myHeroes.indexOf(heroId) > -1) return state;
 
     const myHeroes = [...state.myHeroes, heroId];

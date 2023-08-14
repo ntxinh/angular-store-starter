@@ -1,7 +1,7 @@
-import { appReducer } from './app/app.reducer';
-import { heroReducer } from './hero/hero.reducer';
-import { historiesReducer } from './history/history.reducer';
-import { REDUCER_KEYS } from './reducer.keys.enum';
+import { appReducer } from './app';
+import { heroReducer } from './hero';
+import { historiesReducer } from './history';
+// import { REDUCER_KEYS } from './reducer.keys.enum';
 
 export const reducers = {
   // [REDUCER_KEYS.APP]: appReducer,

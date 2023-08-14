@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  HeroesActions,
-  HeroesApiActions,
-} from 'src/app/store/hero/heroes.actions';
-import {
+  HeroActions,
+  HeroApiActions,
   selectAllHeroes,
   selectMyHeroes,
-} from 'src/app/store/hero/heroes.selectors';
+} from 'src/app/store/hero';
 
 @Component({
   // selector: 'heroes',
@@ -21,11 +19,11 @@ export class HeroesComponent implements OnInit {
   myHeroes$ = this.store.select(selectMyHeroes);
 
   onAdd(heroId: number) {
-    this.store.dispatch(HeroesActions.addHero({ heroId }));
+    this.store.dispatch(HeroActions.addHero({ heroId }));
   }
 
   onRemove(heroId: number) {
-    this.store.dispatch(HeroesActions.removeHero({ heroId }));
+    this.store.dispatch(HeroActions.removeHero({ heroId }));
   }
 
   constructor(private store: Store) {}
@@ -43,6 +41,6 @@ export class HeroesComponent implements OnInit {
       { id: 19, name: 'Arduin' },
       { id: 20, name: 'Arthur' },
     ];
-    this.store.dispatch(HeroesApiActions.retrievedHeroList({ heroes }));
+    this.store.dispatch(HeroApiActions.retrievedHeroList({ heroes }));
   }
 }

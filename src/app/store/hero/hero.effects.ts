@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
-import { HeroesActions, HeroesApiActions } from './heroes.actions';
-import { HistoriesActions } from '../history/history.actions';
+import { HeroActions, HeroApiActions } from './hero.actions';
+import { HistoriesActions } from '../history';
 
 @Injectable()
-export class HeroesEffects {
+export class HeroEffects {
   loadHeroes$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HeroesApiActions.retrievedHeroList),
+      ofType(HeroApiActions.retrievedHeroList),
       exhaustMap(() =>
         of([]).pipe(
           map(() => HistoriesActions.addHistory({ history: 'Loaded Success' })),
@@ -21,7 +21,7 @@ export class HeroesEffects {
 
   addHero$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HeroesActions.addHero),
+      ofType(HeroActions.addHero),
       exhaustMap(() =>
         of([]).pipe(
           map(() => HistoriesActions.addHistory({ history: 'Added Success' })),
@@ -33,7 +33,7 @@ export class HeroesEffects {
 
   removeHero$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HeroesActions.removeHero),
+      ofType(HeroActions.removeHero),
       exhaustMap(() =>
         of([]).pipe(
           map(() =>
