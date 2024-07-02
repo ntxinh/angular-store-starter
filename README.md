@@ -32,4 +32,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 npm run ng --version
 npm start
 npm run ng add @ngrx/signals@18.0.0-beta.1
+npm run ng generate component users
+npm run ng generate service users
 ```

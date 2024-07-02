@@ -1,0 +1,9 @@
+<div>
+  <input #userName type="text" placeholder="Name">
+  <input #userAge type="number" placeholder="Age">
+  <button (click)="addUser(userName.value, userAge.value)">Add User</button>
+</div>
+
+<div *ngFor="let user of users">
+  <p>{{ user.name }} ({{ user.age }} years old)</p>
+</div>
